@@ -1,0 +1,30 @@
+Ayuda:
+    ¬Pantalla:
+        -Hay dos areas de dibujo: una es XY y la otra va a ser (dentro de poco) un corte transversal del eje Z(*)
+        -Un area de texto donde se anota el "codigo G" o Gcode (CG)
+            +Ese texto tiene una especie de simulacion con dos botones:(**)
+                                                                + Siguiente: dibuja el comando del codigo G 
+                                                                + Anterior: desdibuja el comando
+            +Botones de ZOOM: que corresponden a las areas de dibujo
+        -Entradas de textos para coordenadas X e Y. Estas son coordenadas relativas y con movimiento en diagonal para el CG, es decir que si para la coordenada X le damos Valor de 10 y para Y valor de 10 el CG  va a realizar un movimiento diagonal. Y, por ejemplo, para trasladar la maquina sobre el eje X en las entradas de coordenadas tendemos que anotar entradaX=10 entradaY=0 si luego cambiamos los valores de entradaX=0 y entradaY=10 su maquina se movera desde Y=0 a Y=10 formando un angulo de 90° en relacion al eje X. Segun las coordenadas ingresadas anteriormente, si queremos volver al punto X=0 e Y=0 deveremos anotar en las entradas valores negativos, que resten, para volver la herramienta al punto deseado, por ejemplo: si queremos volver al punto 0,0 deberiamos anotar en entradaX=-10 y entradaY=-10 esto realizara un movimiento diagonal hasta el punto de inicio.(***)
+        -Boton Anotar: anota los valores para X Y.
+        -Boton Deshacer: borra la ultima accion... OJO!!! que si la ultima accion es un perfilado predeterminado lo BORRA COMPLETO
+        -Boton Dibujar desde Texto: dibuja todo lo anotado en el cuadro de CG
+        -Boton Reiniciar: borra todo.
+        -Boton Agregar Perfilado: para Fresados pre determinados (****)
+        
+(*)Falta habilitar la simulacion del eje Z
+(**)Puede fallar cada tanto y la idea es el zoom +/- para el dibujo de XY y zoom +/- para el eje Z (todavia no habilitado)
+(***)Vale la aclaracion ya que el CG se puede escribir con coordenadas absolutas(G0) y o relativas(G1), pero la simulacion no va a diferenciar entre una u otra, solo las relativas(G1).
+(****)Todavia faltan de programar algunos.
+
+    ¬Agregar Perfilado:
+        -1 Para Perfilado XY, realiza un frezado plano para la cara superior.
+            -A Para Conica desde redondo, en la cara superior de una pieza redonda puede hacer un cono.
+        -2 No habilitado
+        -3 No habilitado
+        -4 No habilitado
+        -5 Para perforacion Simple, perfora y nada mas. Para agregar varias perforaciones marcar el punto de partida (Ej: X=0 Y=0) luego el punto de la perforacion, entrar en Agregar Perfilado, opcion 5 llenar los datos y aceptar, para un nuevo punto indicar las nuevas coordenadas (relativas) y agregar una nueva perforacion (Agregar Perfilado, opcion 5) lo mismo se pueden agregar puntos infinitos, si es su deceo.
+    
+    A tener en cuenta:
+        En caso de necesitar realizar varios trabajos de Perfilado, tenga en cuenta que si por ejemplo realizamos un Perfilado XY con un valor de Z de -1mm(por ejemplo) y luego queremos realizar una perforacion de 4mm(por ejemplo) el valor de Z para llegar a esa profundidad debera ser de Z deseado + Z de la accion anterior que segun describe el ejemplo es de 1 eso nos dara un valor de "Profundidad Z" = 5mm
